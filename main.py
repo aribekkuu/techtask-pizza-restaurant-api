@@ -1,7 +1,5 @@
 from __future__ import annotations
-
 from typing import Annotated, List, Optional
-
 from fastapi import Depends, FastAPI, HTTPException, status
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import ForeignKey, func, select
@@ -38,7 +36,6 @@ class Restaurant(Base):
     name: Mapped[str] = mapped_column(unique=True)
     address: Mapped[str]
     chef_id: Mapped[int] = mapped_column(ForeignKey("chefs.id"))
-
     chef: Mapped[Chef] = relationship(back_populates="restaurants")
     pizzas: Mapped[List["Pizza"]] = relationship(back_populates="restaurant")
     reviews: Mapped[List["Review"]] = relationship(back_populates="restaurant")
@@ -60,7 +57,6 @@ class Ingredient(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(unique=True)
-
     pizzas: Mapped[List["Pizza"]] = relationship(
         secondary="pizzas_ingredients", back_populates="ingredients"
     )
@@ -75,7 +71,6 @@ class Pizza(Base):
     dough: Mapped[str]
     secret: Mapped[str]
     restaurant_id: Mapped[int] = mapped_column(ForeignKey("restaurants.id"))
-
     restaurant: Mapped[Restaurant] = relationship(back_populates="pizzas")
     ingredients: Mapped[List[Ingredient]] = relationship(
         secondary="pizzas_ingredients", back_populates="pizzas"
@@ -89,7 +84,6 @@ class Review(Base):
     rating: Mapped[int]
     comment: Mapped[str]
     restaurant_id: Mapped[int] = mapped_column(ForeignKey("restaurants.id"))
-
     restaurant: Mapped[Restaurant] = relationship(back_populates="reviews")
 
 
@@ -100,7 +94,6 @@ class ChefCreate(BaseModel):
 
 class ChefRead(ChefCreate):
     id: int
-
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -113,14 +106,12 @@ class RestaurantCreate(BaseModel):
 class RestaurantRead(RestaurantCreate):
     id: int
     chef: ChefRead
-
     model_config = ConfigDict(from_attributes=True)
 
 
 class IngredientRead(BaseModel):
     id: int
     name: str
-
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -151,7 +142,6 @@ class PizzaRead(BaseModel):
     restaurant_id: int
     restaurant_name: str
     ingredients: List[IngredientRead]
-
     model_config = ConfigDict(from_attributes=True)
 
 
