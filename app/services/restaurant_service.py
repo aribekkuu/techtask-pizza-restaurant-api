@@ -7,8 +7,8 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from src.domain.models import Chef, Restaurant
-from src.schemas import RestaurantCreate, RestaurantRead
+from app.models.models import Chef, Restaurant
+from app.models import RestaurantCreate, RestaurantRead
 
 
 async def list_restaurants(session: AsyncSession) -> List[RestaurantRead]:

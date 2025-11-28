@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from core.db import AsyncSessionMaker, init_db
-from routing.routes import router as api_router
+from routers.routes import router as api_router
 from services.seed import seed_data
 
 

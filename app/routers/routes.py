@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.core.db import get_session
-from src.domain.models import Chef, Ingredient, Pizza, Restaurant
-from src.schemas import (
+from app.core.db import get_session
+from app.models.models import Chef, Ingredient, Pizza, Restaurant
+from app.schemas import (
     ChefCreate,
     ChefRead,
     IngredientRead,
@@ -15,7 +15,7 @@ from src.schemas import (
     ReviewCreate,
     ReviewRead,
 )
-from src.services import pizza_service, restaurant_service, review_service
+from app.services import pizza_service, restaurant_service, review_service
 
 
 router = APIRouter()
