@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from core.db import AsyncSessionMaker, init_db
-from routers.routes import router as api_router
-from services.seed import seed_data
+from app.core.db import AsyncSessionMaker, init_db
+from app.routers.routes import router as api_router
+from app.services.seed import seed_data
 
 
 app = FastAPI(title="Pizza Task API (Clean Architecture)", version="2.0.0")

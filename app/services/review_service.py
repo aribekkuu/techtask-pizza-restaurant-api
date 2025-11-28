@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.models import Restaurant, Review
-from app.models import ReviewCreate, ReviewRead
+from app.schemas.models import ReviewCreate, ReviewRead
 
 
 async def list_reviews(session: AsyncSession) -> List[ReviewRead]:

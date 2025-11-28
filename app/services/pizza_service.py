@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from app.models.models import Ingredient, Pizza
-from app.schemas import IngredientRead, PizzaCreate, PizzaRead, PizzaUpdate
+from app.schemas.models import IngredientRead, PizzaCreate, PizzaRead, PizzaUpdate
 
 
 def pizzas_to_schema(pizzas: List[Pizza]) -> List[PizzaRead]:
