@@ -6,8 +6,9 @@ from fastapi import HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.models import Restaurant, Review
-from app.schemas.models import ReviewCreate, ReviewRead
+from app.models.restaurant import Restaurant
+from app.models.review import Review
+from app.schemas.review import ReviewCreate, ReviewRead
 
 
 async def list_reviews(session: AsyncSession) -> List[ReviewRead]:

@@ -4,7 +4,9 @@ from typing import List
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.models.models import Chef, Ingredient, Pizza, Restaurant, Review
+from app.models.pizza import Ingredient, Pizza
+from app.models.restaurant import Restaurant, Chef
+from app.models.review import Review
 
 
 async def seed_data(session: AsyncSession) -> None:

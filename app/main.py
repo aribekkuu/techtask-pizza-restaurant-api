@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from app.core.db import AsyncSessionMaker, init_db
-from app.routers.routes import router as api_router
+from app.routers.pizza_router import router as api_router
 from app.services.seed import seed_data
 
 @asynccontextmanager

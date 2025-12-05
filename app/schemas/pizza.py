@@ -4,38 +4,6 @@ from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict
 
-
-class ChefCreate(BaseModel):
-    name: str
-    email: Optional[str] = None
-
-
-class ChefRead(ChefCreate):
-    id: int
-
-    model_config = ConfigDict(from_attributes=True)
-
-
-class RestaurantCreate(BaseModel):
-    name: str
-    address: str
-    chef_id: int
-
-
-class RestaurantRead(RestaurantCreate):
-    id: int
-    chef: ChefRead
-
-    model_config = ConfigDict(from_attributes=True)
-
-
-class IngredientRead(BaseModel):
-    id: int
-    name: str
-
-    model_config = ConfigDict(from_attributes=True)
-
-
 class PizzaCreate(BaseModel):
     name: str
     cheese: str
@@ -66,17 +34,8 @@ class PizzaRead(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
-
-class ReviewCreate(BaseModel):
-    rating: int
-    comment: str
-    restaurant_id: int
-
-
-class ReviewRead(BaseModel):
+class IngredientRead(BaseModel):
     id: int
-    rating: int
-    comment: str
-    restaurant_name: str
+    name: str
 
-
+    model_config = ConfigDict(from_attributes=True)

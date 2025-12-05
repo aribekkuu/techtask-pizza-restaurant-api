@@ -7,8 +7,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.models.models import Ingredient, Pizza
-from app.schemas.models import IngredientRead, PizzaCreate, PizzaRead, PizzaUpdate
+from app.models.pizza import Ingredient, Pizza
+from app.schemas.pizza import IngredientRead, PizzaCreate, PizzaRead, PizzaUpdate
 
 
 def pizzas_to_schema(pizzas: List[Pizza]) -> List[PizzaRead]:
@@ -48,7 +48,7 @@ async def list_pizzas(session: AsyncSession) -> List[PizzaRead]:
 
 
 async def create_pizza(payload: PizzaCreate, session: AsyncSession) -> PizzaRead:
-    from app.models.models import Restaurant  # local to avoid cycles
+    from app.models.restaurant import Restaurant  # local to avoid cycles
 
     restaurant = await session.get(Restaurant, payload.restaurant_id)
     if restaurant is None:
@@ -70,7 +70,7 @@ async def create_pizza(payload: PizzaCreate, session: AsyncSession) -> PizzaRead
 
 
 async def update_pizza(pizza_id: int, payload: PizzaUpdate, session: AsyncSession) -> PizzaRead:
-    from app.models.models import Restaurant  # local to avoid cycles
+    from app.models.restaurant import Restaurant  # local to avoid cycles
 
     pizza = await session.get(
         Pizza,
