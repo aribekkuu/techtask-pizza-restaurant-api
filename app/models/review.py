@@ -8,7 +8,6 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.core.db import Base
 from app.models.restaurant import Restaurant, Chef
 from app.models.pizza import Pizza, Ingredient, PizzaIngredient
-from app.models.review import Review
 
 class Review(Base):
     __tablename__ = "reviews"

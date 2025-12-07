@@ -7,18 +7,10 @@ from app.models.pizza import Pizza, PizzaIngredient, Ingredient
 from app.models.restaurant import Restaurant, Chef
 from app.models.review import Review
 
-from app.schemas import (
-    ChefCreate,
-    ChefRead,
-    IngredientRead,
-    PizzaCreate,
-    PizzaRead,
-    PizzaUpdate,
-    RestaurantCreate,
-    RestaurantRead,
-    ReviewCreate,
-    ReviewRead,
-)
+from app.schemas.pizza import PizzaCreate, PizzaRead, PizzaUpdate, IngredientRead
+from app.schemas.restaurant import RestaurantCreate, RestaurantRead, ChefCreate, ChefRead
+from app.schemas.review import ReviewCreate, ReviewRead
+
 from app.services.review import review_service
 from app.services.pizza import pizza_service
 from app.services.restaurant import restaurant_service
