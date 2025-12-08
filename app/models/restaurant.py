@@ -7,8 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.db import Base
 
-from app.core.db import Base
-from app.models.pizza import Pizza, Ingredient, PizzaIngredient
+from app.models.pizza import Pizza
 from app.models.review import Review
 
 

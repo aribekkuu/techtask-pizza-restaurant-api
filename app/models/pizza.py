@@ -1,15 +1,13 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.db import Base
 
-from app.core.db import Base
-from app.models.restaurant import Restaurant, Chef
-from app.models.review import Review
+from app.models.restaurant import Restaurant
 
 class Pizza(Base):
     __tablename__ = "pizzas"
