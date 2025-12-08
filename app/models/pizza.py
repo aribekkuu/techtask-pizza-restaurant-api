@@ -7,8 +7,6 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.db import Base
 
-from app.models.restaurant import Restaurant
-
 class Pizza(Base):
     __tablename__ = "pizzas"
 
@@ -19,7 +17,7 @@ class Pizza(Base):
     secret: Mapped[str]
     restaurant_id: Mapped[int] = mapped_column(ForeignKey("restaurants.id"))
 
-    restaurant: Mapped[Restaurant] = relationship(back_populates="pizzas")
+    restaurant: Mapped["Restaurant"] = relationship(back_populates="pizzas")
     ingredients: Mapped[List[Ingredient]] = relationship(
         secondary="pizzas_ingredients", back_populates="pizzas"
     )

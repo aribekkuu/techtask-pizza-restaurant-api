@@ -7,9 +7,6 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.db import Base
 
-from app.models.pizza import Pizza
-from app.models.review import Review
-
 
 class Restaurant(Base):
     __tablename__ = "restaurants"

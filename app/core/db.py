@@ -9,10 +9,9 @@ from sqlalchemy.orm import DeclarativeBase
 
 
 # PostgreSQL URL (async)
-DB_URL = (
-    f"postgresql+asyncpg://{os.getenv('POSTGRES_USER')}:{os.getenv('POSTGRES_PASSWORD')}"
-    f"@{os.getenv('POSTGRES_HOST')}:{os.getenv('POSTGRES_PORT', 5432)}/{os.getenv('POSTGRES_DB')}"
-)
+
+DB_URL = "postgresql+asyncpg://alibekzhazit@localhost:5432/techtaskdb"
+
 
 
 class Base(DeclarativeBase):
