@@ -1,4 +1,5 @@
 /venv
+/.venv
 /app/core/.env
 /.pytest_cache/
 

@@ -11,3 +11,5 @@ pytest-asyncio
 aiosqlite
 greenlet
 ruff
+pre-commit
+uvenv
