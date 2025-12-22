@@ -7,6 +7,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.db import Base
 
+
 class Pizza(Base):
     __tablename__ = "pizzas"
 
@@ -22,6 +23,7 @@ class Pizza(Base):
         secondary="pizzas_ingredients", back_populates="pizzas"
     )
 
+
 class PizzaIngredient(Base):
     __tablename__ = "pizzas_ingredients"
 
@@ -31,6 +33,7 @@ class PizzaIngredient(Base):
     ingredient_id: Mapped[int] = mapped_column(
         ForeignKey("ingredients.id"), primary_key=True, index=True
     )
+
 
 class Ingredient(Base):
     __tablename__ = "ingredients"

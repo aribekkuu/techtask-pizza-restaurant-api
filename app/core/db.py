@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 
 from typing import AsyncGenerator
 
@@ -13,17 +12,17 @@ from sqlalchemy.orm import DeclarativeBase
 DB_URL = "postgresql+asyncpg://alibekzhazit@localhost:5432/techtaskdb"
 
 
-
 class Base(DeclarativeBase):
     """Base class for all ORM models."""
+
     pass
 
 
 # Создаём асинхронный движок PostgreSQL
 engine = create_async_engine(
     DB_URL,
-    echo=True,          # включай True если хочешь видеть SQL
-    future=True
+    echo=True,  # включай True если хочешь видеть SQL
+    future=True,
 )
 
 # Фабрика сессий
@@ -43,6 +42,3 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
 async def init_db() -> None:
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-
-
-

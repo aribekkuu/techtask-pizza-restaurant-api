@@ -20,6 +20,7 @@ class Restaurant(Base):
     pizzas: Mapped[List["Pizza"]] = relationship(back_populates="restaurant")
     reviews: Mapped[List["Review"]] = relationship(back_populates="restaurant")
 
+
 class Chef(Base):
     __tablename__ = "chefs"
 

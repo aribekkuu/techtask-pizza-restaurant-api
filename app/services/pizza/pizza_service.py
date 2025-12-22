@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import List
 
-from fastapi import HTTPException, status
+from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -21,7 +21,9 @@ def pizzas_to_schema(pizzas: List[Pizza]) -> List[PizzaRead]:
             secret=pizza.secret,
             restaurant_id=pizza.restaurant_id,
             restaurant_name=pizza.restaurant.name,
-            ingredients=[IngredientRead.model_validate(ing) for ing in pizza.ingredients],
+            ingredients=[
+                IngredientRead.model_validate(ing) for ing in pizza.ingredients
+            ],
         )
         for pizza in pizzas
     ]
@@ -69,7 +71,9 @@ async def create_pizza(payload: PizzaCreate, session: AsyncSession) -> PizzaRead
     return pizzas_to_schema([pizza])[0]
 
 
-async def update_pizza(pizza_id: int, payload: PizzaUpdate, session: AsyncSession) -> PizzaRead:
+async def update_pizza(
+    pizza_id: int, payload: PizzaUpdate, session: AsyncSession
+) -> PizzaRead:
     from app.models.restaurant import Restaurant  # local to avoid cycles
 
     pizza = await session.get(
@@ -105,5 +109,3 @@ async def delete_pizza(pizza_id: int, session: AsyncSession) -> None:
         raise HTTPException(status_code=404, detail="Pizza not found")
     await session.delete(pizza)
     await session.commit()
-
-

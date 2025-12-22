@@ -96,10 +96,14 @@ async def seed_data(session: AsyncSession) -> None:
     session.add_all(pizzas)
 
     reviews = [
-        Review(rating=5, comment="Лучшая пицца города!", restaurant_id=restaurants[0].id),
-        Review(rating=4, comment="Очень вкусно, но долго ждали.", restaurant_id=restaurants[1].id),
+        Review(
+            rating=5, comment="Лучшая пицца города!", restaurant_id=restaurants[0].id
+        ),
+        Review(
+            rating=4,
+            comment="Очень вкусно, но долго ждали.",
+            restaurant_id=restaurants[1].id,
+        ),
     ]
     session.add_all(reviews)
     await session.commit()
-
-

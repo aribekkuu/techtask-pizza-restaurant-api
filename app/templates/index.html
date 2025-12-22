@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    input {
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button {
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+<body>
+
+<input type="file" id="image">
+<button type="button" onclick="sendImage()">Send</button>
+
+<p id="top"></p>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

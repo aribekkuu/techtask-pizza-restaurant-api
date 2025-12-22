@@ -35,5 +35,3 @@ async def create_restaurant(
 
 async def count_restaurants(session: AsyncSession) -> int:
     return await session.scalar(select(func.count(Restaurant.id))) or 0
-
-

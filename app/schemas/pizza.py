@@ -4,6 +4,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict
 
+
 class PizzaCreate(BaseModel):
     name: str
     cheese: str
@@ -33,6 +34,7 @@ class PizzaRead(BaseModel):
     ingredients: List[IngredientRead]
 
     model_config = ConfigDict(from_attributes=True)
+
 
 class IngredientRead(BaseModel):
     id: int

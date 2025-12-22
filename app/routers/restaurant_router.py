@@ -3,15 +3,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.db import get_session
 
-from app.models.pizza import Pizza, PizzaIngredient, Ingredient
-from app.models.restaurant import Restaurant, Chef
-from app.models.review import Review
+from app.models.pizza import Pizza
+from app.models.restaurant import Chef
 
-from app.schemas.pizza import PizzaCreate, PizzaRead, PizzaUpdate, IngredientRead
-from app.schemas.restaurant import RestaurantCreate, RestaurantRead, ChefCreate, ChefRead
-from app.schemas.review import ReviewCreate, ReviewRead
+from app.schemas.pizza import PizzaRead
+from app.schemas.restaurant import (
+    RestaurantCreate,
+    RestaurantRead,
+    ChefCreate,
+    ChefRead,
+)
 
-from app.services.review import review_service
 from app.services.pizza import pizza_service
 from app.services.restaurant import restaurant_service
 
@@ -19,6 +21,7 @@ router = APIRouter()
 
 
 SessionDep = Depends(get_session)
+
 
 @router.post(
     "/restaurants/",
@@ -34,6 +37,7 @@ async def create_restaurant(
 @router.get("/restaurants/", response_model=list[RestaurantRead])
 async def list_restaurants(session: AsyncSession = SessionDep) -> list[RestaurantRead]:
     return await restaurant_service.list_restaurants(session)
+
 
 @router.get("/chefs/", response_model=list[ChefRead])
 async def list_chefs(session: AsyncSession = SessionDep) -> list[ChefRead]:

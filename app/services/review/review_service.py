@@ -28,12 +28,12 @@ async def list_reviews(session: AsyncSession) -> List[ReviewRead]:
     ]
 
 
-async def create_review(
-    payload: ReviewCreate, session: AsyncSession
-) -> ReviewRead:
+async def create_review(payload: ReviewCreate, session: AsyncSession) -> ReviewRead:
     restaurant = await session.get(Restaurant, payload.restaurant_id)
     if restaurant is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Restaurant not found")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="Restaurant not found"
+        )
 
     review = Review(**payload.model_dump())
     session.add(review)
@@ -45,5 +45,3 @@ async def create_review(
         comment=review.comment,
         restaurant_name=restaurant.name,
     )
-
-
