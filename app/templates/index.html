@@ -16,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffde8b;
     }
     input {
         font-size: 16px;
@@ -25,13 +26,42 @@
         font-size: 16px;
         cursor: pointer;
     }
+    .modal {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 20px;
+        border: 1px solid #000000;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ff5900;
+    }
+    .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
 </style>
 <body>
 
-<input type="file" id="image">
-<button type="button" onclick="sendImage()">Send</button>
-
-<p id="top"></p>
+<div class="modal">
+    <input type="file" id="image">
+    <button type="button" onclick="sendImage()" id="button">Send</button>
+    <div id="loader" style="display: none;">
+        <p style="font-family: Arial, Helvetica, sans-serif;">Loading...</p>
+        <div class="spinner"></div>
+      </div>
+    <p id="top" style="font-family:Arial, Helvetica, sans-serif;"></p>
+</div>
 
 <script src="/static/script.js"></script>
 </body>
